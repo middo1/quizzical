@@ -6,15 +6,39 @@ import Quiz from "./components/Quiz";
 function App() {
     const [questions, setQuestions] = React.useState([])
     const [restart, setRestart] = React.useState(false)
+    const [amount, setAmount] = React.useState(5)
+    const [type, setType] = React.useState("")
+    const [difficulty, setDifficulty] = React.useState("")
+    const [category, setCategory] = React.useState("")
 
+    const handleTypeChange = (event) => (
+        setType(event.target.value)
+    )
+    const handleAmountChange = (event) => {
+        if (isNaN(event.target.value)) {
+            setAmount(5)
+        } else if(event.target.value < 0) {
+            setAmount(5)
+        } else if (event.target.value > 50) {
+            setAmount(50)
+        } else {
+            setAmount(event.target.value)
+        }
+    }
+    const handleDifficultyChange = (event) => {
+        setDifficulty(event.target.value)
+    }
+    const handleCategoryChange = (event) => {
+        setCategory(event.target.value)
+    }
     const [score , setScore] = React.useState([])
     React.useEffect(() => {
         setQuestions(prev => [])
-        fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+        fetch(`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`)
         .then(res => res.json())
         .then(data => setQuestions(prev => data.results))
         setScore(prv => [])
-    },[restart])
+    },[restart, amount, difficulty, category, type])
 
     const [start, setStart] = React.useState(false)
     function startHandler() {
@@ -41,6 +65,7 @@ function App() {
             key={question.question}
             check={check}
             addScore={addScore}/>))
+    // const loading = 
     return (
         <div className="container">
             {start 
@@ -68,6 +93,14 @@ function App() {
             </div>
             : <Start
                 start={startHandler}
+                type={type}
+                handleTypeChange={handleTypeChange}
+                amount={amount}
+                handleAmountChange={handleAmountChange}
+                difficulty={difficulty}
+                handleDifficultyChange={handleDifficultyChange}
+                category={category}
+                handleCategoryChange={handleCategoryChange}
             />}
         </div>
     )
