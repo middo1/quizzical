@@ -19,6 +19,7 @@
   line-height: 1.1875em; /* 1.1875em*/
   font-family: 'Inter';
   font-style: normal;
+  margin-top: 15px;
 }
 
 .app-btn:focus {
@@ -29,7 +30,7 @@
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 .start-app {
-  margin-top: 12.5em;
+  margin-top: 10em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -162,4 +163,26 @@
   .app-description {
     font-size: 1rem;
   }
+}
+.select-container {
+  display: flex;
+  flex-direction: column;
+}
+.select-container label {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.select-container label select, input {
+  width: 100%;
+  margin: 10px 0;
+  border: 0.794239px solid #4D5B9E;
+  border-radius: 8px;
+  padding: 5px 0;
+}
+.select-container label input {
+  width: 99%;
+  padding-left: 5px;
+}
+.select-container label input:focus {
+  outline: none;
 }

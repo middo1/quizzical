@@ -15,14 +15,14 @@ export default function Start(
         <div className="start-app">
             <h1 className="app-name">Quizzical</h1>
             <h5 className="app-description">A cool quiz app</h5>
-            <form onSubmit={start}>
-                <div className="option-container">
+            <form>
+                <div className="select-container">
                     <label>
                         Select Number of Questions:
                         <input type="text" value={amount} onChange={handleAmountChange} />
                     </label>
                     <label>
-                        Select Category
+                        Select Category:
                         <select value={category} onChange={handleCategoryChange}>
                             <option value="any">Any Category</option>
                             <option value="9">General Knowledge</option>
@@ -70,14 +70,14 @@ export default function Start(
                     </label>
                 </div>
 
-                <button 
-                    className="app-btn" 
-                    onClick={start}
-                >
-                Start Quiz
-                </button>
 
             </form>
+            <button 
+                className="app-btn" 
+                onClick={start}
+            >
+            Start Quiz
+            </button>
         </div>
     )
 }
