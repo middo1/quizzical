@@ -10,6 +10,7 @@ function App() {
     const [type, setType] = React.useState("")
     const [difficulty, setDifficulty] = React.useState("")
     const [category, setCategory] = React.useState("")
+    const [reset, setReset] = React.useState(false)
 
     const handleTypeChange = (event) => (
         setType(event.target.value)
@@ -43,6 +44,8 @@ function App() {
     const [start, setStart] = React.useState(false)
     function startHandler() {
         setStart(true)
+        setReset(false)
+        // setRestart(prev => !prev)
     }
     const [check, setCheck] = React.useState(false)
     
@@ -55,6 +58,10 @@ function App() {
     }
     function addScore(s) {
          setScore(prv => [...prv, s])
+    }
+    function handleReset() {
+        setReset(prev => !prev)
+        setCheck(false)
     }
     const c = 0
     const scor = score.reduce((a,b) => a+b,c)
@@ -69,7 +76,7 @@ function App() {
     return (
         <div className="container">
             {start 
-            ? <div className="main">
+            ? !reset ? <div className="main">
                 {showQuiz}
                 <div className="button-container">
                     {check && 
@@ -77,7 +84,7 @@ function App() {
                     You scored {scor}/{questions.length} correct answers
                     </h1>}
                     {questions.length ?
-                    <button 
+                    <><button 
                     className="submit-btn" 
                     onClick={check 
                             ? handleRestart 
@@ -87,10 +94,28 @@ function App() {
                     ? "Play again" 
                     : "Check answers"
                     }
-                    </button> : 
+                    </button> 
+                    <button 
+                    className='submit-btn'
+                    onClick={handleReset}
+                    >
+                        Reset Questions
+                    </button></> : 
                     <h1 className="load">Loading...</h1>}
                 </div>
-            </div>
+            </div> 
+            : 
+            <Start
+                start={startHandler}
+                type={type}
+                handleTypeChange={handleTypeChange}
+                amount={amount}
+                handleAmountChange={handleAmountChange}
+                difficulty={difficulty}
+                handleDifficultyChange={handleDifficultyChange}
+                category={category}
+                handleCategoryChange={handleCategoryChange}
+            />
             : <Start
                 start={startHandler}
                 type={type}
