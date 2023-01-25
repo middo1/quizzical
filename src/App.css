@@ -4,7 +4,7 @@
   align-items: center;
   flex-direction: column;
   padding: 2em;
-  min-width: fit-content; 
+  /* min-width: fit-content;  */
 }
 .app-btn {
   height: 3em;
@@ -72,7 +72,7 @@
   font-family: 'Karla';
   font-style: normal;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.8rem;
   line-height: 1.1875em;
   color: #293264;
 }
@@ -92,7 +92,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
-  font-size: 0.625rem;
+  font-size: 0.5rem;
   line-height: 1.2em;
   cursor: pointer;
 
