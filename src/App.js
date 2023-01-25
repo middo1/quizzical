@@ -84,7 +84,7 @@ function App() {
                     You scored {scor}/{questions.length} correct answers
                     </h1>}
                     {questions.length ?
-                    <><button 
+                    <div className='btns-container'><button 
                     className="submit-btn" 
                     onClick={check 
                             ? handleRestart 
@@ -100,7 +100,7 @@ function App() {
                     onClick={handleReset}
                     >
                         Reset Questions
-                    </button></> : 
+                    </button></div> : 
                     <h1 className="load">Loading...</h1>}
                 </div>
             </div> 
